@@ -6,6 +6,7 @@ This project it's an app to make your annotations in your cellphone Android and 
  Objective-C<br />
  Dagger<br />
  Sqldelight<br />
+ JetpackCompose
 
 # Getting Started
  git clone https://github.com/moraisfabio/noteappmultiplataform<br />
