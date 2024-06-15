@@ -48,7 +48,7 @@ class NoteListViewModel @Inject constructor(
     fun onToggleSearch() {
         savedStateHandle["isSearchActive"] = !isSearchActive.value
         if (!isSearchActive.value) {
-           savedStateHandle["isSearchActive"] = ""
+           savedStateHandle["isSearchActive"] = isSearchActive.value
         }
     }
 

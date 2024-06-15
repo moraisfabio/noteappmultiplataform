@@ -47,7 +47,7 @@ fun NoteListScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {navController.navigate("note_detail/-1L")},
-                modifier = Modifier.background(Color.Black)
+                containerColor = Color.Black
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,

@@ -41,7 +41,7 @@ fun NoteDetailScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = viewModel::saveNote,
-                modifier = Modifier.background(Color.Black)
+                containerColor = Color.Black
             ) {
                 Icon(
                     imageVector = Icons.Default.Check,
@@ -71,7 +71,7 @@ fun NoteDetailScreen(
             )
             Spacer(modifier = Modifier.height(15.dp))
             TransparentHintTextField(
-                text = state.noteTitle,
+                text = state.noteContent,
                 hint = "Enter a Content...",
                 isHintVisible = state.isNoteContentHintVisible,
                 onValueChange = viewModel::onNoteContentChanged,

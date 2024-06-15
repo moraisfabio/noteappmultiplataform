@@ -64,17 +64,17 @@ class NoteDetailViewModel @Inject constructor(
         }
     }
 
-    fun onNoteTitleChanged(text: String) {
-        savedStateHandle["noteTitle"] = text
+    fun onNoteTitleChanged(textTitle: String) {
+        savedStateHandle["noteTitle"] = textTitle
     }
-    fun onNoteContentChanged(text: String) {
-        savedStateHandle["noteContent"] = text
+    fun onNoteContentChanged(textContent: String) {
+        savedStateHandle["noteContent"] = textContent
     }
-    fun onNoteTitleFocusChanged(isFocused: Boolean) {
-        savedStateHandle["isNoteTitleFocused"] = isFocused
+    fun onNoteTitleFocusChanged(isTitleFocused: Boolean) {
+        savedStateHandle["isNoteTitleFocused"] = isTitleFocused
     }
-    fun onNoteContentFocusChanged(isFocused: Boolean) {
-        savedStateHandle["isNoteContentTextFocused"] = isFocused
+    fun onNoteContentFocusChanged(isContentFocused: Boolean) {
+        savedStateHandle["isNoteContentTextFocused"] = isContentFocused
     }
 
     fun saveNote() {
