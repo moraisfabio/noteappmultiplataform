@@ -40,16 +40,3 @@ struct NoteItem: View {
         .clipShape(RoundedRectangle(cornerRadius: 5.0))
     }
 }
-
-#Preview {
-    NoteItem(
-        note: Note(
-            id: nil,
-            title: "My Note",
-            content: "Note content",
-            colorHex: 0xFF2341,
-            created: DateTimeUtil().now()
-        )
-        , onDeleteClick: {}
-    )
-}

@@ -12,6 +12,7 @@ struct HideableSearchTextField<Destination: View>: View {
     var onSearchToggled: () -> Void
     var destinationProvider: () -> Destination
     var isSearchActive: Bool
+    var isNoteSelected: Bool
     @Binding var searchText: String
     
     var body: some View {
@@ -27,18 +28,14 @@ struct HideableSearchTextField<Destination: View>: View {
                     .foregroundColor(.black)
             }
             NavigationLink(destination: destinationProvider) {
-                Image(systemName: "plus")
-                    .foregroundColor(.black)
+                if isNoteSelected {
+                    Image(systemName: "pencil")
+                        .foregroundColor(.black)
+                } else {
+                    Image(systemName: "plus")
+                        .foregroundColor(.black)
+                }
             }
         }
     }
-}
-
-#Preview {
-    HideableSearchTextField(
-        onSearchToggled: {},
-        destinationProvider: {EmptyView()},
-        isSearchActive: true,
-        searchText: .constant("Youtube")
-    )
 }

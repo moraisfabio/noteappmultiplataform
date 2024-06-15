@@ -43,7 +43,3 @@ struct NoteDetailScreen: View {
         }
     }
 }
-
-#Preview {
-    EmptyView()
-}

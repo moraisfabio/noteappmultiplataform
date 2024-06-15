@@ -24,18 +24,20 @@ struct NoteListScreen: View {
     var body: some View {
         VStack {
             ZStack {
-                NavigationLink(
-                    destination: NoteDetailScreen(noteDataSource: self.noteDataSource, noteId: selectedNoteId),
-                    isActive: $isNoteSelected)
-                {
-                    EmptyView()
+                NavigationLink("Detail Screen") {
+                    NoteDetailScreen(noteDataSource: self.noteDataSource, noteId: selectedNoteId)
                 }.hidden()
                 HideableSearchTextField<NoteDetailScreen>(
                     onSearchToggled: {viewModel.toggleIsSearchActive()},
                     destinationProvider: {
-                        NoteDetailScreen(noteDataSource: noteDataSource, noteId: selectedNoteId
-                    )},
+                        if isNoteSelected {
+                            NoteDetailScreen(noteDataSource: noteDataSource, noteId: selectedNoteId)
+                        } else {
+                            NoteDetailScreen(noteDataSource: noteDataSource)
+                        }
+                    },
                     isSearchActive: viewModel.isSearchActive,
+                    isNoteSelected: isNoteSelected,
                     searchText: $viewModel.searchtext
                 )
                 .frame(maxWidth: .infinity, minHeight: 40)
@@ -49,14 +51,15 @@ struct NoteListScreen: View {
             List {
                 ForEach(viewModel.filteredNotes, id: \.self.id){ note in
                     Button(action: {
-                        isNoteSelected = true
+                        self.isNoteSelected.toggle()
                         selectedNoteId = note.id?.int64Value
                     }) {
                         NoteItem(
                             note: note,
                             onDeleteClick: {
                                 viewModel.deleteNotesById(id: note.id?.int64Value)
-                            })
+                            }
+                        )
                     }
                 }
             }
@@ -70,8 +73,4 @@ struct NoteListScreen: View {
             viewModel.setNoteDataSource(noteDataSource: noteDataSource)
         }
     }
-}
-
-#Preview {
-    EmptyView()
 }
